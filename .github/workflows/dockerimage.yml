@@ -1,34 +1,29 @@
 name: Docker Image CI
 
+
 on: [push]
 
 jobs:
 
   build:
-    
+
     runs-on: ubuntu-latest
 
     steps:
+    # Checkout.
     - uses: actions/checkout@v1
+
+    # build the Docker image.
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag subaniprasad/go_app
-
-  login:
     
-      needs: [build]
-      runs-on: ubuntu-latest
-
-      steps:
-      - name: Login to Docker Hub
-        run: docker login --username $USERNAME --password $PASSWORD
-        env:
-          USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
-          PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
-
-  push:
-      needs: [build,login]
-      runs-on: ubuntu-latest
-      
-      steps:
-      - name: Push Image to Docker registry
-        run: docker push subaniprasad/go_app
+    # Login to Docker, Docker hub credentials are stored in secrets.
+    - name: Login to Docker Hub
+      run: docker login --username $USERNAME --password $PASSWORD
+      env:
+        USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
+        PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
+    
+    # Image pushing to Docker hub registry
+    - name: Push Image to Docker registry
+      run: docker push subaniprasad/go_app
