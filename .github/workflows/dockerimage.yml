@@ -12,12 +12,21 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag subaniprasad/go_app
-    - name: Login to Docker Hub
-      run: docker login --username $USERNAME --password $PASSWORD
-      env:
-        USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
-        PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
-    - name: Push Image to Docker registry
-      run: docker push subaniprasad/go_app
 
-  
+  login:
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Login to Docker Hub
+        run: docker login --username $USERNAME --password $PASSWORD
+        env:
+          USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
+          PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
+
+  push:
+    
+      runs-on: ubuntu-latest
+      
+      steps:
+      - name: Push Image to Docker registry
+        run: docker push subaniprasad/go_app
