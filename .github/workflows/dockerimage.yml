@@ -11,10 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag subaniprasad/go_app:$(date +%s)
+      run: docker build . --file Dockerfile --tag subaniprasad/go_app
     - name: Login to Docker Hub
       run: docker login --username subaniprasad --password Pappu@123
     - name: Push Image to Docker registry
-      run: docker push subaniprasad/go_app:$(date +%s)
+      run: docker push subaniprasad/go_app
 
   
