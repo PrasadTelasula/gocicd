@@ -13,7 +13,10 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag subaniprasad/go_app
     - name: Login to Docker Hub
-      run: docker login --username username --password password
+      run: docker login --username $USERNAME --password $PASSWORD
+      env:
+        USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
+        PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
     - name: Push Image to Docker registry
       run: docker push subaniprasad/go_app
 
