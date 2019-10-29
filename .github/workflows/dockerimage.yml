@@ -6,7 +6,7 @@ on: [push]
 jobs:
 
   build:
-    name: build
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
   
   deploy:
     needs: [build]
-    name: Build
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to Docker swarm
@@ -42,7 +42,7 @@ jobs:
         port: 22
         script: |
           docker pull subaniprasad/go_app
-          docker service update --image subaniprasad/go_app
+          docker service update --image subaniprasad/go_app go_app
           
           
     
