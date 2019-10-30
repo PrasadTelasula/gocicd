@@ -36,7 +36,7 @@ jobs:
     - name: Deploy to Docker swarm
       uses: appleboy/ssh-action@master
       with:
-        host: 13.232.253.91
+        host: 13.233.215.208
         username:  ${{ secrets.docker_user }}
         key: ${{ secrets.swarmLaunchKey }}
         port: 22
