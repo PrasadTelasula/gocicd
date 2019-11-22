@@ -6,7 +6,7 @@ import (
 )
 
 func index_handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello Everyone, Welcome to spinnaker. Happy CI/CD with spinnaker.")
+	fmt.Fprintf(w, "Hello Everyone, Welcome to spinnaker. Happy CI/CD with spinnaker")
 }
 func main() {
 	http.HandleFunc("/", index_handler)
