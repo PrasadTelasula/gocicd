@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout.
+    # Checkout
     - uses: actions/checkout@v1
 
     # build the Docker image
