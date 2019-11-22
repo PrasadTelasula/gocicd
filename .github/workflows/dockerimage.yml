@@ -13,7 +13,7 @@ jobs:
     # Checkout.
     - uses: actions/checkout@v1
 
-    # build the Docker image.
+    # build the Docker image
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag subaniprasad/go_app
     
