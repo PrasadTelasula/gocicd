@@ -28,21 +28,21 @@ jobs:
     - name: Push Image to Docker registry
       run: docker push subaniprasad/go_app
   
-  deploy:
-    needs: [build]
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy to Docker swarm
-      uses: appleboy/ssh-action@master
-      with:
-        host: 13.233.215.208
-        username:  ${{ secrets.docker_user }}
-        key: ${{ secrets.swarmLaunchKey }}
-        port: 22
-        script: |
-          docker pull subaniprasad/go_app
-          docker service update --image subaniprasad/go_app go_app
+  #deploy:
+  #  needs: [build]
+  #  name: Deploy
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - name: Deploy to Docker swarm
+  #    uses: appleboy/ssh-action@master
+  #    with:
+  #      host: 13.233.215.208
+  #      username:  ${{ secrets.docker_user }}
+  #      key: ${{ secrets.swarmLaunchKey }}
+  #      port: 22
+  #      script: |
+  #        docker pull subaniprasad/go_app
+  #        docker service update --image subaniprasad/go_app go_app
           
           
     
