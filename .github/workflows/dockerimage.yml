@@ -24,7 +24,7 @@ jobs:
         USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
         PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
     
-    # Image pushing to Docker hub registry
+    # Image pushing to Docker hub registry.
     - name: Push Image to Docker registry
       run: docker push subaniprasad/go_app
   
